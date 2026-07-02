@@ -9,28 +9,24 @@ package Ruteo;
  * @author JoseDaniel
  */
 public class Dijkstra {
-    public static void rutaMasCorta(Grafo g, int inicio, int destino, HashTable ht) {
+   public static void rutaMasCorta(Grafo g, int inicio, int destino, HashTable ht) {
         int n = g.getN();
         int[] distancia = new int[n];
         int[] predecesor = new int[n];
         boolean[] visitado = new boolean[n];
-        
         for (int i = 0; i < n; i++) {
             distancia[i] = Integer.MAX_VALUE;
             predecesor[i] = -1;
             visitado[i] = false;
         }
         distancia[inicio] = 0;
-        ColaPrioridad cp = new ColaPrioridad();
-        for (int i = 0; i < n; i++) {
-            cp.enqueue(i);
-        }
-        while (!cp.isEmpty()) {
-            int u = cp.dequeue(distancia);
-            if (distancia[u] == Integer.MAX_VALUE) {
-                break;
-            }
+        MinHeap heap = new MinHeap(n * n);
+        heap.insertar(inicio, 0);
+        while (!heap.isEmpty()) {
+            int u = heap.extraerMinimo();
+            if (visitado[u]) continue;
             visitado[u] = true;
+            if (distancia[u] == Integer.MAX_VALUE) break;
             NodoGrafo temp = g.getAdj(u);
             while (temp != null) {
                 int v = temp.destino;
@@ -38,6 +34,7 @@ public class Dijkstra {
                 if (!visitado[v] && distancia[u] + peso < distancia[v]) {
                     distancia[v] = distancia[u] + peso;
                     predecesor[v] = u;
+                    heap.insertar(v, distancia[v]);
                 }
                 temp = temp.next;
             }
@@ -53,14 +50,11 @@ public class Dijkstra {
             pila.push(actual);
             actual = predecesor[actual];
         }
-        
         System.out.println("\n=== Dijkstra ===");
         System.out.print("Ruta: ");
         while (!pila.isEmpty()) {
             System.out.print(ht.search(pila.pop()));
-            if (!pila.isEmpty()){
-                System.out.print(" -> ");
-            }
+            if (!pila.isEmpty()) System.out.print(" -> ");
         }
         System.out.println("\nDistancia total: " + distancia[destino] + " km");
     }

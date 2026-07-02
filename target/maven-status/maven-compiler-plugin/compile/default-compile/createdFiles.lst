@@ -8,7 +8,7 @@ Ruteo\HashTable.class
 Ruteo\NodoH.class
 Ruteo\Pila.class
 Ruteo\LectorArchivos.class
-Ruteo\UCS.class
+Ruteo\MinHeap.class
 Ruteo\NodoGrafo.class
 Ruteo\AStar.class
 Ruteo\Prueba.class
