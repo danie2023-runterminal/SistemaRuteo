@@ -20,7 +20,9 @@ public class BellmanFord {
         }
         
         distancia[s] = 0;
-        
+        // Relajación de aristas.
+        // Un camino simple más corto no puede tener más de n-1 aristas.
+        // Iterar n-1 veces garantiza encontrar la distancia mínima para todos los nodos.
         for (int i = 1; i <= n - 1; i++) {
             for (int u = 0; u < n; u++) {
                 NodoGrafo temp = g.getAdj(u);
@@ -37,7 +39,9 @@ public class BellmanFord {
                 }
             }
         }
-        
+        // Detección de ciclos de peso negativo.
+        // Si después de n-1 iteraciones aún se puede acortar una distancia, 
+        // significa que existe un ciclo cerrado que reduce el peso infinitamente.
         for (int u = 0; u < n; u++) {
             NodoGrafo temp = g.getAdj(u);
             while (temp != null) {
@@ -55,6 +59,9 @@ public class BellmanFord {
                 + ht.search(s) + " y " + ht.search(destino));
             return;
         }
+        // Reconstrucción del camino óptimo.
+        // Se utiliza una Pila porque el arreglo padre  nos da la ruta 
+        // desde el destino hacia el origen (en reversa), y necesitamos imprimirla al derecho.
         Pila pila = new Pila();
         int actual = destino;
         while (actual != -1) {

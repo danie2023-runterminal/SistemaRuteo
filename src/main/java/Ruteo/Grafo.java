@@ -37,45 +37,6 @@ public class Grafo {
             System.out.println("NULL");
         }
     }
-//    public void bfs(int start){
-//        boolean[] visited = new boolean[n];
-//        ColaPrioridad q = new ColaPrioridad();
-//        visited[start] = true;
-//        q.enqueue(start);
-//        while(!q.isEmpty()){
-//            int v = q.dequeue();
-//            System.out.print(v + " ");
-//            NodoGrafo temp = listaAdyacencia[v]; 
-//            while(temp != null){
-//                int vecino = temp.destino;
-//                if(!visited[vecino]){
-//                    visited[vecino] = true;
-//                    q.enqueue(vecino);
-//                }
-//                temp = temp.next;
-//            }
-//        }
-//    }
-//    public void dfs(int start){
-//    boolean[] visited = new boolean[n];
-//    Pila pila = new Pila();
-//    pila.push(start);
-//    while(!pila.isEmpty()){
-//        int v = pila.pop();
-//        if(!visited[v]){
-//            visited[v] = true;
-//            System.out.print(v + " ");
-//            NodoGrafo temp = listaAdyacencia[v];
-//            while(temp != null){
-//                int vecino = temp.destino;
-//                if(!visited[vecino]){
-//                    pila.push(vecino);
-//                }
-//                temp = temp.next;
-//            }
-//        }
-//    }
-//}
  public void mostrar(HashTable ht) {
         for (int i = 0; i < n; i++) {
             System.out.print(ht.search(i) + " -> ");

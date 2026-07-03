@@ -8,6 +8,7 @@ package Ruteo;
  *
  * @author JoseDaniel
  */
+//NodoPila
 public class NodoP {
     int valor;
     NodoP next;

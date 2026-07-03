@@ -8,6 +8,7 @@ package Ruteo;
  *
  * @author JoseDaniel
  */
+//Estructura de eda 1
 public class Pila {
     private NodoP tope;
     

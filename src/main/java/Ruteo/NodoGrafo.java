@@ -8,6 +8,7 @@ package Ruteo;
  *
  * @author JoseDaniel
  */
+//Nodo para el grafo xdd
 public class NodoGrafo {
     int destino;
     int peso;

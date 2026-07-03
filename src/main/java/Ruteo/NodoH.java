@@ -8,6 +8,7 @@ package Ruteo;
  *
  * @author JoseDaniel
  */
+//Nodo para la tabla hash
 public class NodoH {
     int key;
     String value;

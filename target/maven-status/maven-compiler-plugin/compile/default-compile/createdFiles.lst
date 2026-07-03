@@ -1,5 +1,4 @@
 Ruteo\Dijkstra.class
-Ruteo\ColaPrioridad.class
 Ruteo\Grafo.class
 Ruteo\NodoP.class
 Ruteo\BellmanFord.class

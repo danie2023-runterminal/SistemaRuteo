@@ -15,7 +15,7 @@ public static void main(String[] args) {
         HashTable ht = new HashTable(15);
         Grafo g = new Grafo(n);
         int[][] coordenadas = new int[n][2];
-        LectorArchivos.cargarDatos("mapa.txt", g, ht, coordenadas);
+        LectorArchivos.cargarDatos("mapa2.txt", g, ht, coordenadas);
         System.out.println("--- MAPA ---");
         g.mostrar(ht);
         System.out.println("\nCalculando rutas de Lima a Cusco...");

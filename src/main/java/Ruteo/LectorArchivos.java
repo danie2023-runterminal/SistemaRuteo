@@ -10,6 +10,10 @@ import java.io.IOException;
  *
  * @author JoseDaniel
  */
+
+//Clase base adaptada de una plantilla de terceros.
+//Encargada de leer un archivo de texto secuencialmente para inicializar 
+//las estructuras de datos del proyecto (Grafo, Tabla Hash y Coordenadas).
 public class LectorArchivos {
     public static void cargarDatos(String ruta, Grafo g, HashTable ht, int[][] coordenadas) {
         try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {

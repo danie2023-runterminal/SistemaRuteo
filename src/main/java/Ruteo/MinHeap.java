@@ -13,16 +13,21 @@ public class MinHeap {
     private int[] distancias;
     private int tamano;
     private int capacidad;
+    
+    //Constructor del MinHeap.
     public MinHeap(int capacidad) {
         this.capacidad = capacidad;
         nodos = new int[capacidad];
         distancias = new int[capacidad];
         tamano = 0;
     }
+    //Estas fórmulas matemáticas calculan los índices relativos.
     private int parent(int i) { return (i - 1) / 2; }
     private int left(int i)   { return 2 * i + 1; }
     private int right(int i)  { return 2 * i + 2; }
-    
+//     Restaura la propiedad del Min-Heap de abajo hacia arriba (Burbujeo).
+//      Si un nodo recién insertado es menor que su padre, se intercambian 
+//      hasta que el nodo encuentre su posición válida.
     private void heapifyUp(int i) {
         while (i > 0 && distancias[i] < distancias[parent(i)]) {
             int tempNodo = nodos[i];
@@ -34,6 +39,9 @@ public class MinHeap {
             i = parent(i);
         }
     }
+//     Restaura la propiedad del Min-Heap de arriba hacia abajo (Hundimiento).
+//     Al extraer el mínimo (la raíz), el último elemento se coloca en la cima 
+//     y luego se baja intercambiándose con el menor de sus hijos.
     private void heapifyDown(int i) {
         while (left(i) < tamano) {
             int hijoIzq = left(i);
@@ -55,12 +63,14 @@ public class MinHeap {
             }
         }
     }
+    //Inserta un nuevo nodo y su distancia en el montículo.
     public void insertar(int nodo, int distancia) {
         nodos[tamano] = nodo;
         distancias[tamano] = distancia;
         tamano++;
         heapifyUp(tamano - 1);
     }
+    //Extrae y devuelve el nodo con la distancia mínima (siempre ubicado en la raíz/índice 0).
     public int extraerMinimo() {
         if (tamano == 0) {
             return -1;
@@ -74,6 +84,7 @@ public class MinHeap {
         }
         return minNodo;
     }
+    //Elimina un elemento en un índice arbitrario.
     public void eliminarEn(int i) {
         if (i <0 || i>=tamano) {
             return;
@@ -91,9 +102,11 @@ public class MinHeap {
             heapifyDown(i);
         }
     }
+    //Comprobar si esta vacio xdd
     public boolean isEmpty() {
         return tamano == 0;
     }
+    //Imprime
     public void imprimir(HashTable ht) {
         for (int i = 0; i < tamano; i++) {
             System.out.print(ht.search(nodos[i]) + 
